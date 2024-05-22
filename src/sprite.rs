@@ -217,7 +217,7 @@ impl Spritesheet {
 
     /// copy all the data from the specified spritesheet data into self + load and use the image
     /// specified in the spritesheet data
-    pub fn copy_from_with_image(
+    pub fn copy_from_with_image_relative(
         &mut self,
         data: &SpritesheetData,
         frame_anchor: &Anchor,
@@ -225,6 +225,26 @@ impl Spritesheet {
     ) {
         self.copy_from(data, frame_anchor);
         self.img_handle = asset_server.load(&data.meta.image);
+    }
+
+    pub fn copy_from_with_image(
+        &mut self,
+        data: &SpritesheetData,
+        data_ref: &Handle<SpritesheetData>,
+        frame_anchor: &Anchor,
+        asset_server: &Res<AssetServer>,
+    ) {
+        // TODO:
+        // if relative path is valid, use that
+        // otherwise load from asset folder root
+        let asset_path = asset_server.get_path(data_ref).expect("");
+        let folder_path = asset_path
+            .parent()
+            .expect("asset should always have a path");
+        let image_path = folder_path.path().join(&data.meta.image);
+
+        self.copy_from(data, frame_anchor);
+        self.img_handle = asset_server.load(image_path);
     }
 
     /// Get the image handle that the spritesheet is using

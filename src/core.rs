@@ -131,7 +131,7 @@ fn handle_spritesheet_loading(
         if let Some(spr_data) = spritesheet_data_assets.get(handle_spr_dat) {
             if let Some(sheet) = spritesheet_assets.get_mut(handle_spr) {
                 // create the spritesheet
-                sheet.copy_from_with_image(spr_data, anchor, &asset_server);
+                sheet.copy_from_with_image(spr_data, handle_spr_dat, anchor, &asset_server);
                 sheet.create_atlas_handle(&mut atlas_assets);
 
                 // execute callback
