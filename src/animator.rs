@@ -132,13 +132,11 @@ impl SpriteAnimator {
                 let target_loops = (seconds / anim_time).floor();
                 if loop_cur_time <= loop_target_time {
                     self.last_frame_start = target_loops * anim_time + loop_cur_time;
+                } else if target_loops > 0.0 {
+                    self.last_frame_start = target_loops * anim_time;
+                    self.last_anim_index = 0;
                 } else {
-                    if target_loops > 0.0 {
-                        self.last_frame_start = target_loops * anim_time;
-                        self.last_anim_index = 0;
-                    } else {
-                        self.reset_persistent_data();
-                    }
+                    self.reset_persistent_data();
                 }
             } else {
                 target_time = cur_anim.total_time();

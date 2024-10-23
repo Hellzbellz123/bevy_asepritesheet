@@ -2,7 +2,7 @@ use crate::aseprite_data;
 use aseprite_data::SpritesheetData;
 use bevy::{prelude::*, sprite::Anchor};
 use serde::{Deserialize, Serialize};
-use std::{ops::*, usize};
+use std::ops::*;
 
 // Struct Definitions: ---------------------------------------------------------
 
@@ -96,10 +96,10 @@ impl Spritesheet {
         img_size: Vec2,
     ) -> Self {
         Spritesheet {
-            frames: frames,
-            anims: anims,
-            img_handle: img_handle,
-            img_size: img_size,
+            frames,
+            anims,
+            img_handle,
+            img_size,
             atlas_handle: None,
         }
     }
@@ -254,7 +254,7 @@ impl Spritesheet {
 
     /// Get the dimensions of the image asset being used by the spritesheet
     pub fn img_size(&self) -> Vec2 {
-        self.img_size.clone()
+        self.img_size
     }
 
     /// Get the total amount of animations that the spritesheet contains
@@ -336,7 +336,7 @@ impl Anim {
         self.total_time
     }
 
-    fn calculate_total_time(&mut self, frames: &Vec<Frame>) {
+    fn calculate_total_time(&mut self, frames: &[Frame]) {
         let mut time = 0.0;
         for frame_index in &self.frames_indices {
             time += frames[*frame_index].duration;
