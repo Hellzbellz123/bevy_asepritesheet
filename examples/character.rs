@@ -32,7 +32,7 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     // create a camera so we can see the sprite
     commands.spawn(Camera2dBundle {
         camera: Camera {
-            clear_color: ClearColorConfig::Custom(Color::rgb(0.3, 0.3, 0.3)),
+            clear_color: ClearColorConfig::Custom(Color::srgb(0.3, 0.3, 0.3)),
             ..Default::default()
         },
         projection: OrthographicProjection {

@@ -28,7 +28,8 @@ pub struct SpriteAnimator {
 
 #[derive(Bundle, Default, Clone)]
 pub struct AnimatedSpriteBundle {
-    pub sprite_bundle: SpriteSheetBundle,
+    pub tex_atlas: TextureAtlas,
+    pub sprite_bundle: SpriteBundle,
     pub spritesheet: Handle<Spritesheet>,
     pub animator: SpriteAnimator,
     pub needs_img: NeedsSheetImageHandle,
