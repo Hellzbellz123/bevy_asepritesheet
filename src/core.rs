@@ -5,8 +5,7 @@ use crate::{
     sprite::{add_needed_atlas_handles, add_needed_img_handles},
 };
 use bevy::{
-    asset::AssetPath, ecs::schedule::ScheduleLabel, prelude::*, sprite::Anchor,
-    utils::intern::Interned,
+    asset::AssetPath, ecs::{intern::Interned, schedule::ScheduleLabel}, prelude::*, sprite::Anchor,
 };
 
 // Structs: -------------------------------------------------------------------

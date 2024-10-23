@@ -7,7 +7,6 @@ use serde_json::from_slice;
 pub(crate) struct SpritesheetAssetLoader {
     pub extensions: Vec<&'static str>,
 }
-
 // Struct Implementations: -----------------------------------------------------
 
 impl AssetLoader for SpritesheetAssetLoader {
@@ -15,6 +14,7 @@ impl AssetLoader for SpritesheetAssetLoader {
     type Settings = ();
     type Error = std::io::Error;
 
+    #[allow(refining_impl_trait)]
     fn load<'a>(
         &'a self,
         reader: &'a mut Reader,

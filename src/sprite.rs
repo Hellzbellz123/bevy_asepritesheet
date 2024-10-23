@@ -276,9 +276,9 @@ impl Spritesheet {
         if let Some(handle) = &self.atlas_handle {
             atlas_assets.remove(handle);
         }
-        let mut atlas = TextureAtlasLayout::new_empty(self.img_size());
+        let mut atlas = TextureAtlasLayout::new_empty(self.img_size().as_uvec2());
         for frame in &self.frames {
-            atlas.add_texture(frame.rect.clone());
+            atlas.add_texture(frame.rect.as_urect());
         }
         let handle = atlas_assets.add(atlas);
         self.atlas_handle = Some(handle.clone());

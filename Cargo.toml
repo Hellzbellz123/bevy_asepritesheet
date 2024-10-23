@@ -16,6 +16,6 @@ license = "MIT"
 path = "src/lib.rs"
 
 [dependencies]
-bevy = "0.13"
+bevy = "0.14"
 serde_json = "1"
 serde = "1"
